@@ -1,39 +1,41 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI
 from pydantic import BaseModel
 from typing import List
 
 app = FastAPI()
 
-# Request model
-class QueryRequest(BaseModel):
-    query: str
-
-# Response model
-class Assessment(BaseModel):
-    url: str
-    adaptive_support: str  # "Yes" or "No"
-    description: str
-    duration: int
-    remote_support: str  # "Yes" or "No"
-    test_type: List[str]
-
-class RecommendationResponse(BaseModel):
-    recommended_assessments: List[Assessment]
-
+# Health check endpoint
 @app.get("/health")
 def health_check():
     return {"status": "healthy"}
 
-@app.post("/recommend", response_model=RecommendationResponse)
-def recommend(query: QueryRequest):
-    # Dummy response (replace with your model logic)
+# Request model for recommendation
+class RecommendRequest(BaseModel):
+    query: str
+
+# Response model for assessments
+class Assessment(BaseModel):
+    url: str
+    adaptive_support: str
+    description: str
+    duration: int
+    remote_support: str
+    test_type: List[str]
+
+class RecommendResponse(BaseModel):
+    recommended_assessments: List[Assessment]
+
+# Recommend endpoint
+@app.post("/recommend", response_model=RecommendResponse)
+def recommend_assessments(req: RecommendRequest):
+    # Dummy data for example
     return {
         "recommended_assessments": [
             {
-                "url": "https://example.com/python-test",
+                "url": "https://www.shl.com/solutions/products/product-catalog/view/python-new/",
                 "adaptive_support": "No",
-                "description": "Test for Python devs",
-                "duration": 60,
+                "description": "Multi-choice test for Python knowledge.",
+                "duration": 11,
                 "remote_support": "Yes",
                 "test_type": ["Knowledge & Skills"]
             }
