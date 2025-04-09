@@ -5,3 +5,7 @@ scikit-learn
 sentence-transformers
 uvicorn
 newspaper3k
+requests
+beautifulsoup4
+sentence-transformers
+streamlit
