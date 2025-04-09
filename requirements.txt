@@ -7,5 +7,4 @@ uvicorn
 newspaper3k
 requests
 beautifulsoup4
-sentence-transformers
-streamlit
+lxml==4.9.3
