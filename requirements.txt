@@ -1,0 +1,7 @@
+streamlit
+fastapi
+pandas
+scikit-learn
+sentence-transformers
+uvicorn
+newspaper3k

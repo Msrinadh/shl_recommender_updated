@@ -1,0 +1,3 @@
+assessment_name,description,test_type,url,remote_testing,adaptive_support,duration
+Sales Capability Test,Assess sales skills,Sales,http://example.com/test1,Yes,Yes,30 mins
+Technical Skills Assessment,Assess coding ability,Tech,http://example.com/test2,Yes,No,45 mins
